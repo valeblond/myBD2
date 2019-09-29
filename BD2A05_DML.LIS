@@ -1,0 +1,54 @@
+SQL> 
+SQL> set serveroutput on;
+SQL> 
+SQL> insert into uczestnicy values (ucz_seq.nextval, 'Konrad', 'Piszczek');
+
+1 row inserted.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+SQL> insert into uczestnicy values (ucz_seq.nextval, 'Rafal', 'Celkowski');
+
+1 row inserted.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+SQL> delete from uczestnicy where surname = 'Piszczek';
+
+1 row deleted.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+SQL> insert into oferty values (1515, 3, 
+  2                            3000,(select TO_DATE('07-09-2024', 'dd/mm/yyyy') from dual),
+  3                            (select id_uczestnika from uczestnicy where surname = 'Celkowski'));
+
+1 row inserted.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+SQL> insert into oferty values (7345, 5, 
+  2                            200,(select TO_DATE('17-11-2004', 'dd/mm/yyyy') from dual),
+  3                            (select id_uczestnika from uczestnicy where surname = 'Mroz'));
+
+1 row inserted.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+SQL> 
+SQL> spool off 
